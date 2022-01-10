@@ -1,5 +1,5 @@
 import mysql.connector
-
+import os
 #establishing the connection
 conn = mysql.connector.connect(
     user='root', host='127.0.0.1',port='3307', database='course')
@@ -43,7 +43,6 @@ def course_view():
     for name in result:
         print(name)
 
-
 def remove_course_data():
     c_i=int(input('please enter the course id want to be deleted'))
     c_d=(c_i,)
@@ -69,11 +68,14 @@ def show_menu_project():
         else:
             print('Enter correct option.... ')    
 
+def run_again():
+    run=input('wanna to run again Y/n ! press :')
+    while (run.lower()=='y'):
+        print(os.system('cls'))         # windows platform 
+        show_menu_project()
+        run=input('wanna to run again Y/n ! press :')
+    print("I'm at the service!")
 
-
-    
-
-
-
-
-show_menu_project()
+if __name__ == "__main__":
+    run_again()
+ 
